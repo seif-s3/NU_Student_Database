@@ -1,0 +1,198 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema applicants
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema applicants
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `applicants` DEFAULT CHARACTER SET utf8 ;
+USE `applicants` ;
+
+-- -----------------------------------------------------
+-- Table `applicants`.`applicant_military_status`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `applicants`.`applicant_military_status` (
+  `MilitaryStatus` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`MilitaryStatus`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `applicants`.`applicant`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `applicants`.`applicant` (
+  `ApplicationID` INT(11) NOT NULL AUTO_INCREMENT,
+  `FirstName` VARCHAR(45) NOT NULL,
+  `MiddleName` VARCHAR(45) NOT NULL,
+  `LastName` VARCHAR(45) NOT NULL,
+  `DateOfBirth` DATE NOT NULL,
+  `IsMale` BIT(1) NOT NULL,
+  `MilitaryStatus` VARCHAR(45) NULL DEFAULT NULL,
+  `PlaceOfBirth` VARCHAR(45) NOT NULL,
+  `NationalID` VARCHAR(45) NULL DEFAULT NULL,
+  `NationaIDExpiry` DATE NULL DEFAULT NULL,
+  `Passport` VARCHAR(45) NULL DEFAULT NULL,
+  `PassportExpiry` DATE NULL DEFAULT NULL,
+  PRIMARY KEY (`ApplicationID`, `IsMale`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `applicants`.`applicant_applied_semester`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `applicants`.`applicant_applied_semester` (
+  `AppliedSemester` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`AppliedSemester`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `applicants`.`admission_info`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `applicants`.`admission_info` (
+  `ApplicationID` INT(11) NOT NULL,
+  `ID` INT(11) NOT NULL,
+  `SemesterOfApplication` VARCHAR(45) NULL DEFAULT NULL,
+  `Year` YEAR NULL DEFAULT NULL,
+  `AppliedSchool` VARCHAR(45) NULL DEFAULT NULL,
+  `IntendedMajor` VARCHAR(45) NULL DEFAULT NULL,
+  `TOEFLResults` INT(4) NULL DEFAULT NULL,
+  `TOEFLDate` DATE NULL DEFAULT NULL,
+  PRIMARY KEY (`ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `applicants`.`contact_info`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `applicants`.`contact_info` (
+  `ApplicationID` INT(11) NOT NULL,
+  `ID` INT(11) NOT NULL,
+  `HomeAddress` TEXT NULL DEFAULT NULL,
+  `HomeTel` VARCHAR(45) NULL DEFAULT NULL,
+  `HomeMobile` VARCHAR(45) NULL DEFAULT NULL,
+  `HomeFax` VARCHAR(45) NULL DEFAULT NULL,
+  `HomeEmail` VARCHAR(45) NULL DEFAULT NULL,
+  `MailingAddress` TEXT NULL DEFAULT NULL,
+  `MailingTel` VARCHAR(45) NULL DEFAULT NULL,
+  `MailingMobile` VARCHAR(45) NULL DEFAULT NULL,
+  `MailingFax` VARCHAR(45) NULL DEFAULT NULL,
+  `MailingEmail` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `applicants`.`father_info`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `applicants`.`father_info` (
+  `ApplicationID` INT(11) NOT NULL,
+  `ID` INT(11) NOT NULL,
+  `FatherFirstName` VARCHAR(45) NOT NULL,
+  `FatherMiddleName` VARCHAR(45) NOT NULL,
+  `FatherLastName` VARCHAR(45) NOT NULL,
+  `FatherAddress` TEXT NULL DEFAULT NULL,
+  `FatherTel` VARCHAR(45) NULL DEFAULT NULL,
+  `FatherMobile` VARCHAR(45) NULL DEFAULT NULL,
+  `FatherOccupation` VARCHAR(45) NULL DEFAULT NULL,
+  `FatherCompany` VARCHAR(45) NULL DEFAULT NULL,
+  `FatherBusinessPhone` VARCHAR(45) NULL DEFAULT NULL,
+  `FatherEmail` VARCHAR(45) NULL DEFAULT NULL,
+  `FatherFax` VARCHAR(45) NULL DEFAULT NULL,
+  `FatherBusinessAddress` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `applicants`.`relationship_financial_info`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `applicants`.`relationship_financial_info` (
+  `Relationship` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`Relationship`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `applicants`.`financial_info`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `applicants`.`financial_info` (
+  `ApplicationID` INT(11) NOT NULL,
+  `ID` INT(11) NOT NULL,
+  `FirstName` VARCHAR(45) NOT NULL,
+  `MiddleName` VARCHAR(45) NOT NULL,
+  `LastName` VARCHAR(45) NOT NULL,
+  `Relationship` VARCHAR(45) NOT NULL,
+  `Other` VARCHAR(45) NULL DEFAULT NULL,
+  `OtherAddress` TEXT NULL DEFAULT NULL,
+  `OtherTel` VARCHAR(45) NULL DEFAULT NULL,
+  `OtherMobile` VARCHAR(45) NULL DEFAULT NULL,
+  `OtherOccupation` VARCHAR(45) NULL DEFAULT NULL,
+  `OtherCompany` VARCHAR(45) NULL DEFAULT NULL,
+  `OtherBusinessPhone` VARCHAR(45) NULL DEFAULT NULL,
+  `OtherEmail` VARCHAR(45) NULL DEFAULT NULL,
+  `OtherFax` VARCHAR(45) NULL DEFAULT NULL,
+  `OtherBusinessAddress` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `applicants`.`highschool_info`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `applicants`.`highschool_info` (
+  `ApplicationID` INT(11) NOT NULL,
+  `ID` INT(11) NOT NULL,
+  `CurrentSchool` VARCHAR(45) NULL DEFAULT NULL,
+  `TypeOfSchool` TINYINT(1) NULL DEFAULT NULL,
+  `TypeOfCertificate` TINYINT(1) NULL DEFAULT NULL,
+  `Address` TEXT NULL DEFAULT NULL,
+  `LanguageOfInstruction` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+-- -----------------------------------------------------
+-- Table `applicants`.`mother_info`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `applicants`.`mother_info` (
+  `ApplicationID` INT(11) NOT NULL,
+  `ID` INT(11) NOT NULL,
+  `MotherFirstName` VARCHAR(45) NOT NULL,
+  `MotherMiddleName` VARCHAR(45) NOT NULL,
+  `MotherLastName` VARCHAR(45) NOT NULL,
+  `MotherAddress` TEXT NULL DEFAULT NULL,
+  `MotherTel` VARCHAR(45) NULL DEFAULT NULL,
+  `MotherMobile` VARCHAR(45) NULL DEFAULT NULL,
+  `MotherOccupation` VARCHAR(45) NULL DEFAULT NULL,
+  `MotherCompany` VARCHAR(45) NULL DEFAULT NULL,
+  `MotherBusinessPhone` VARCHAR(45) NULL DEFAULT NULL,
+  `MotherEmail` VARCHAR(45) NULL DEFAULT NULL,
+  `MotherFax` VARCHAR(45) NULL DEFAULT NULL,
+  `MotherBusinessAddress` TEXT NULL DEFAULT NULL,
+  PRIMARY KEY (`ID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

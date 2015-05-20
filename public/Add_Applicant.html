@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>Nile University</title>
+		<meta name="generator" content="Bluefish 2.2.6" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/styles.css" rel="stylesheet">
+	</head>
+	<body>
+<!-- Header -->
+<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="Admin_home.html">Nile University</a>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        
+        <li class="dropdown">
+          <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> 
+		  Admin <span class="caret"></span></a>
+          <ul id="g-account-menu" class="dropdown-menu" role="menu">
+            <li><a href="#">My Profile</a></li>
+          </ul>
+        </li>
+        <li><a href="#"><i class="glyphicon glyphicon-lock"></i> Logout </a></li>
+      </ul>
+    </div>
+  </div><!-- /container -->
+</div>
+<!-- /Header -->
+
+<!-- Main -->
+<div class="container-fluid">
+<div class="row">
+	<div class="col-sm-3" style="left: 0px; top: 0px; width: 374px">
+      <!-- Left column -->
+      <hr>
+      <a href="#"><strong><i class="glyphicon glyphicon-wrench"></i> Views </strong></a>  
+      
+      
+      <ul class="list-unstyled">
+        <li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu">
+          </a>
+            <ul class="list-unstyled collapse in" id="userMenu">
+                <li class="active"> <a href="Admin_View_Applicants.html"><i class="glyphicon glyphicon-home"></i> 
+				Applicants </a></li>
+                <li><a href="Admin_View_Students.html"><i class="glyphicon glyphicon-cog"></i> 
+				Enrolled Students</a></li>
+                <li><a href="Admin_View_Course_dep.html"><i class="glyphicon glyphicon-comment"></i> 
+				Course Dependencies</a></li>
+                <li><a href="Admin_View_Faculty.html"><i class="glyphicon glyphicon-user"></i> 
+				Faculty</a></li>
+           </ul>
+        </li>
+      </ul>
+
+      <hr>
+           <a href="#"><strong><i class="glyphicon glyphicon-wrench"></i> 
+				Requests  </strong></a>   
+			
+      <ul class="list-unstyled">
+        <li class="nav-header"> <a href="#" data-toggle="collapse" data-target="#userMenu">
+          </a>
+            <ul class="list-unstyled collapse in" id="userMenu">
+                <li class="active"> <a href="Admin_Request_New_Applicant_First.html"><i class="glyphicon glyphicon-home"></i> 
+				New Applicant</a></li>
+                <li class="active"> <a href="Admin_Requests_Grades.html"><i class="glyphicon glyphicon-home"></i> 
+				Assign Grades </a></li>
+                <li><a href="Admin_Requests_Advising.html"><i class="glyphicon glyphicon-cog"></i> 
+				Advising</a></li>
+                <li><a href="Admin_Requests_Transcript.html"><i class="glyphicon glyphicon-comment"></i> 
+				Issue Transcript</a></li>
+           </ul>
+        </li>
+ 
+      </ul>
+           
+      <hr>
+   
+          	</div><!--/col-->
+
+
+        </div>
+                  <div class="col-md-6" style="left: 365px; top: -405px">
+                   <div class="panel panel-default">
+      
+                       <div class="panel-heading"><h4>Applicant Info
+                  </h4></div>
+                  <div class="panel-body">
+                     <form class="form form-vertical=" action="Admin_Request_New_Applicant_Second.html">
+					    <label> <span class="auto-style3"> BASIC INFO </span> </label>
+						<hr>
+                        <div class="control-group">
+                         
+                          <label> Name </label>
+                          <div class="controls">
+                           <input type="text" class="form-control" placeholder="Enter Name" maxlength="45" required>
+                          </div>
+                        </div>      
+         
+                           <label> Date Of Birth </label>
+
+                           <input type="date" class="form-control" style="width: 24%" required>
+                        <div class="control-group">
+						<p></p>
+						<p>
+						<label> Gender     </label>
+						  <br>
+							 <input type="radio" name="gender" value="Female" required> Female<br>
+							 <input type="radio" name="gender" value="Male" required> Male<br>
+						  
+						</p>
+						<p>
+						  <label> Military Status      </label>
+						   <select><option value="-Status">-Status-</option>
+						   <option value="Completed">Completed</option>
+						   <option value="Exempted">Exempted</option>
+						   <option value="Postponed">Postponed</option>
+						  </select>
+						</p>
+						
+						  <label> Place of Birth </label>
+						   <input type="text" class="form-control" placeholder="Enter Address" maxlength="45" required>
+						  <label> National ID number </label>
+						   <input type="text" class="form-control" placeholder="Enter Number" maxlength="45">
+						  <label> National ID Expiry Date </label>
+						   <input type="date" class="form-control" style="width: 24%">
+						  <label> Passport ID number </label>  
+                           <input type="text" class="form-control" placeholder="Enter Address" maxlength="45">
+						  <label> Passport ID Expiry Date </label>
+						   <input type="date" class="form-control"  style="width: 24%">
+
+                        <div class="control-group">
+                          	<label></label>
+                        	<div class="controls">
+                        	<button type="submit" class="btn btn-primary">
+                              Next
+                            </button>
+                        	</div>
+                        </div>   
+                        
+                      </form>
+     
+
+                  </div><!--/panel-body
+              </div><!--/panel-->
+</div>
+     
+      </div><!--/row-->
+      <hr>
+      <hr>
+</div>
+<!-- /Main -->
+	<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/scripts.js"></script>
+	</body>
+</html>

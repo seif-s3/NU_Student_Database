@@ -1,0 +1,82 @@
+ALTER TABLE `applicants`.`applicant` 
+ADD INDEX `Military_Status_FK_idx` (`MilitaryStatus` ASC);
+ALTER TABLE `applicants`.`applicant` 
+ADD CONSTRAINT `Military_Status_FK`
+  FOREIGN KEY (`MilitaryStatus`)
+  REFERENCES `applicants`.`applicant_military_status` (`MilitaryStatus`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `applicants`.`admission_info` 
+ADD INDEX `admission_info_FK_idx` (`ApplicationID` ASC);
+ALTER TABLE `applicants`.`admission_info` 
+ADD CONSTRAINT `admission_info_FK`
+  FOREIGN KEY (`ApplicationID`)
+  REFERENCES `applicants`.`applicant` (`ApplicationID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `applicants`.`admission_info` 
+ADD INDEX `applied_semester_FK_idx` (`SemesterOfApplication` ASC);
+ALTER TABLE `applicants`.`admission_info` 
+ADD CONSTRAINT `applied_semester_FK`
+  FOREIGN KEY (`SemesterOfApplication`)
+  REFERENCES `applicants`.`applicant_applied_semester` (`AppliedSemester`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+
+ALTER TABLE `applicants`.`financial_info` 
+ADD INDEX `financial_info_applicant_ID_FK_idx` (`ApplicationID` ASC);
+ALTER TABLE `applicants`.`financial_info` 
+ADD CONSTRAINT `financial_info_applicant_ID_FK`
+  FOREIGN KEY (`ApplicationID`)
+  REFERENCES `applicants`.`applicant` (`ApplicationID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+  
+ALTER TABLE `applicants`.`financial_info` 
+ADD INDEX `financial_info_relationship_FK_idx` (`Relationship` ASC);
+ALTER TABLE `applicants`.`financial_info` 
+ADD CONSTRAINT `financial_info_relationship_FK`
+  FOREIGN KEY (`Relationship`)
+  REFERENCES `applicants`.`relationship_financial_info` (`Relationship`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;
+  
+ALTER TABLE `applicants`.`contact_info` 
+ADD INDEX `contact_info_applicant_ID_FK_idx` (`ApplicationID` ASC);
+ALTER TABLE `applicants`.`contact_info` 
+ADD CONSTRAINT `contact_info_applicant_ID_FK`
+  FOREIGN KEY (`ApplicationID`)
+  REFERENCES `applicants`.`applicant` (`ApplicationID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;  
+
+
+ALTER TABLE `applicants`.`highschool_info` 
+ADD INDEX `highschool_info_applicant_ID_FK_idx` (`ApplicationID` ASC);
+ALTER TABLE `applicants`.`highschool_info` 
+ADD CONSTRAINT `highschool_info_applicant_ID_FK`
+  FOREIGN KEY (`ApplicationID`)
+  REFERENCES `applicants`.`applicant` (`ApplicationID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;  
+  
+  
+ALTER TABLE `applicants`.`father_info` 
+ADD INDEX `father_info_applicant_ID_FK_idx` (`ApplicationID` ASC);
+ALTER TABLE `applicants`.`father_info` 
+ADD CONSTRAINT `father_info_applicant_ID_FK`
+  FOREIGN KEY (`ApplicationID`)
+  REFERENCES `applicants`.`applicant` (`ApplicationID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;   
+
+ALTER TABLE `applicants`.`mother_info` 
+ADD INDEX `mother_info_applicant_ID_FK_idx` (`ApplicationID` ASC);
+ALTER TABLE `applicants`.`mother_info` 
+ADD CONSTRAINT `mother_info_applicant_ID_FK`
+  FOREIGN KEY (`ApplicationID`)
+  REFERENCES `applicants`.`applicant` (`ApplicationID`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;     
