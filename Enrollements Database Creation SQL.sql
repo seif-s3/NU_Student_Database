@@ -19,7 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `enrollements`
 --
-
+CREATE DATABASE IF NOT EXISTS `enrollements` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `enrollements`;
 -- --------------------------------------------------------
 
 --
