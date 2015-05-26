@@ -144,39 +144,41 @@
                                             Please store it and your password somewhere safe</strong><br><br></p>";
                                 }
                             ?>
-                            <form class="form form-vertical=" action="../controllers/add_new_applicant.php" method="post">
+                            <form onsubmit = "return validateForm()" class="form form-vertical=" action="../controllers/add_new_applicant.php" method="post" name="NewApplication">
                                 <label style="color: CornflowerBlue"> <span class="auto-style3"> BASIC INFO </span> </label>
                                 <hr>
                                 <div class="control-group">
                                     <label> Application Password *</label>
                                     <div class="controls">
-                                        <input type="password" class="form-control" placeholder="Enter Password" maxlength="45" required name="Password">
+                                        <input type="password" class="form-control" placeholder="Enter Password" maxlength="45" style="width: 50%" required name="Password" id="Password">
                                     </div>
                                     <label> Confirm Password *</label>
                                     <div class="controls">
-                                        <input type="password" class="form-control" placeholder="Confirm Password" maxlength="45" required name="Password2">
+                                        <input onkeyup="checkPasswords(); return false;"type="password" class="form-control" style="width: 50%" placeholder="Confirm Password" maxlength="45" required name="Password2" id="Password2">
+                                    <span id="confirmMessage" class="confirmMessage"></span>
                                     </div>
                                     
                                     <label> First Name *</label>
                                     <div class="controls">
-                                        <input type="text" class="form-control" placeholder="Enter First Name" maxlength="45" required name="FirstName">
+                                        <input type="text" class="form-control" placeholder="Enter First Name" style="width: 50%" maxlength="45" required name="FirstName">
                                     </div>
                                 </div>
                                 <label> Middle Name *</label>
-                                    <input type="text" class="form-control" placeholder="Enter Middle Name" maxlength="45" required name="MiddleName">
+                                    <input type="text" class="form-control" placeholder="Enter Middle Name" style="width: 50%" maxlength="45" required name="MiddleName">
                                 <label> Last Name *</label>
-                                    <input type="text" class="form-control" placeholder="Enter Last Name" maxlength="45" required name="LastName">
+                                    <input type="text" class="form-control" placeholder="Enter Last Name" style="width: 50%" maxlength="45" required name="LastName">
                                 <label> Date Of Birth *</label>
-                                    <input type="date" class="form-control" style="width: 24%" name="DateOfBirth" required>
+                                    <input type="date" class="form-control" style="width: 25%" name="DateOfBirth" required>
                                 <div class="control-group">
                                     <p></p>
                                     <p>
                                         <label> Gender </label>
                                         <br>
-                                        <input type="radio" name="Gender" value="Female"> Female<br>
-                                        <input type="radio" name="Gender" value="Male"> Male<br>
+                                        <input type="radio" name="Gender" value="Female" id="genderID" onclick="viewMil(); return false;"> Female<br>
+                                        <input type="radio" name="Gender" value="Male" id="genderID" onclick="viewMil(); return false;"> Male<br>
                                     </p>
                                     <p>
+                                    <div id="Military" style="visibility: hidden">
                                         <label> Military Status (required for males only)</label>
                                         <select name="MilitaryStatus" class="form-control">
                                             <option value="" disabled selected>-Status-</option>
@@ -184,6 +186,7 @@
                                             <option value="Exempted">Exempted</option>
                                             <option value="Postponed">Postponed</option>
                                         </select>
+                                    </div>
                                     </p>
                                     <label> Place of Birth *</label>
                                     <input type="text" class="form-control" placeholder="Enter Address" maxlength="45" required name="PlaceOfBirth">
@@ -424,5 +427,56 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/scripts.js"></script>
+        <script type="text/javascript">
+        function validateForm()
+        {
+            if(document.forms["NewApplication"]["Password"] != document.forms["NewApplication"]["Password2"])
+            {
+                alert("Passwords do not match");
+                return false;
+            }
+            if(document.forms["NewApplication"]["HomeEmail"] == "" || document.forms["NewApplication"]["HomeAddress"] == "" 
+                || document.forms["NewApplication"]["HomeTel"] == "" || document.forms["NewApplication"]["HomeMobile"] == "")
+            {
+                alert("Missing Contact info");
+                return false;
+            }
+        }
+        </script>
+        <script type="text/javascript">
+        function checkPasswords()
+        {
+            var pass1 = document.getElementById('Password');
+            var pass2 = document.getElementById('Password2');
+            //Store the Confimation Message Object ...
+            var message = document.getElementById('confirmMessage');
+            //Set the colors we will be using ...
+            var goodColor = "#66cc66";
+            var badColor = "#ff6666";
+            //Compare the values in the password field 
+            //and the confirmation field
+            if(pass1.value == pass2.value)
+            {
+                message.style.color = goodColor;
+                message.innerHTML = "Passwords Match!";
+            }
+            else
+            {
+                message.style.color = badColor;
+                message.innerHTML = "Passwords Do Not Match!";
+            }
+        }
+        function viewMil()
+        {
+            if(document.getElementById("genderID") == 'Male')
+            {
+                document.getElementById("Military").visibility = 'visible';
+            }
+            else
+            {
+                document.getElementById('Military').visibility = 'hidden';
+            }
+        }
+        </script>
     </body>
 </html>
