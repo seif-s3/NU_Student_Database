@@ -247,7 +247,7 @@
                                         <option value="" disabled selected>--School--</option>
                                         <option value="" disabled selected>--Major--</option>
                                         <?php
-                                        require_once("../functions.php");
+                                        require_once("./functions.php");
                                         dropdown_all_schools();
                                         ?>
                                     </select>
@@ -257,7 +257,7 @@
                                         <select name="IntendedMajor" class="form-control" required >
                                             <option value="" disabled selected>--Major--</option>
                                             <?php
-                                            require_once("../functions.php");
+                                            require_once("./functions.php");
                                             dropdown_all_majors();
                                             ?>
                                         </select>

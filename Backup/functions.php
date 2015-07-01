@@ -40,7 +40,7 @@ function dropdown_all_years()
 {
 	// Call this function inside an <select> tag !!
 
-	require_once("./config/enrollments_config.php");
+	require_once("../config/enrollments_config.php");
 	/* Check that request originated from same domain */
 	$domain = $_SERVER['HTTP_HOST'];
 	$request_domain = parse_url($_SERVER['HTTP_REFERER']);
@@ -64,7 +64,7 @@ function dropdown_all_semesters()
 {
 	// Call this function inside an <select> tag !!
 
-	require_once("./config/enrollments_config.php");                                
+	require_once("../config/enrollments_config.php");                                
     /* Check that request originated from same domain */
     $domain = $_SERVER['HTTP_HOST'];
     $request_domain = parse_url($_SERVER['HTTP_REFERER']);
@@ -85,7 +85,7 @@ function dropdown_all_semesters()
 
 function dropdown_all_schools()
 {
-	require_once("./config/enrollments_config.php");                                
+	require_once("../config/enrollments_config.php");                                
     /* Check that request originated from same domain */
     $domain = $_SERVER['HTTP_HOST'];
     $request_domain = parse_url($_SERVER['HTTP_REFERER']);
@@ -107,7 +107,7 @@ function dropdown_all_schools()
 
 function dropdown_all_majors()
 {
-	require_once("./config/enrollments_config.php");
+	require_once("../config/enrollments_config.php");
     /* Check that request originated from same domain */
     $domain = $_SERVER['HTTP_HOST'];
     $request_domain = parse_url($_SERVER['HTTP_REFERER']);
@@ -129,7 +129,7 @@ function dropdown_all_majors()
 
 function dropdown_all_courses()
 {
-    require_once("./config/enrollments_config.php");
+    require_once("../config/enrollments_config.php");
     /* Check that request originated from same domain */
     $domain = $_SERVER['HTTP_HOST'];
     $request_domain = parse_url($_SERVER['HTTP_REFERER']);
@@ -151,7 +151,7 @@ function dropdown_all_courses()
 
 function dropdown_all_courses_select_id($select)
 {
-    require_once("./config/enrollments_config.php");
+    require_once("../config/enrollments_config.php");
     /* Check that request originated from same domain */
     $domain = $_SERVER['HTTP_HOST'];
     $request_domain = parse_url($_SERVER['HTTP_REFERER']);
@@ -176,7 +176,7 @@ function dropdown_all_courses_select_id($select)
 
 function dropdown_all_grades()
 {
-    require_once("./config/enrollments_config.php");
+    require_once("../config/enrollments_config.php");
     /* Check that request originated from same domain */
     $domain = $_SERVER['HTTP_HOST'];
     $request_domain = parse_url($_SERVER['HTTP_REFERER']);
