@@ -1,17 +1,10 @@
 <html>
 <head>
+	<title>Nile University Application</title>
 	<link href="./bootstrap.css" rel="stylesheet">
 	<link href="./favicon.ico"  rel="shortcut icon">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
 	<script lang="text/javascript" src="./formToWizard.js"></script>
-	<script type="text/javascript">	
-		
-        function MakeWizard() {
-            $("#NewApplication").formToWizard()
-            $("#makeWizard").hide();
-        }
-    
-	</script>
 	<script type="text/javascript">
 		function viewMil()
 		{
@@ -39,9 +32,55 @@
 			$("#step5").show();
 			$("#step6").show();
 		}
+		function hideAllSteps()
+		{
+			$("#step0").hide();
+			$("#step1").hide();
+			$("#step2").hide();
+			$("#step3").hide();
+			$("#step4").hide();
+			$("#step5").hide();
+			$("#step6").hide();
+		}
+		function checkPasswords()
+        {
+            var pass1 = document.getElementById('Password');
+            var pass2 = document.getElementById('Password2');
+            //Store the Confirmation Message Object ...
+            var message = document.getElementById('confirmMessage');
+            //Set the colours we will be using ...
+            var goodColor = "#66cc66";
+            var badColor = "#ff6666";
+            //Compare the values in the password field 
+            //and the confirmation field
+            if(pass1.value == pass2.value)
+            {
+                message.style.color = goodColor;
+                message.innerHTML = "Passwords Match!";
+            }
+            else
+            {
+                message.style.color = badColor;
+                message.innerHTML = "Passwords Do Not Match!";
+            }
+        }
 	</script>
 </head>
 <body>
+<nav class="navbar navbar-default">
+<div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#"><IMG SRC="./NU LOGO.png" style="width:50px;height:30px"></a>
+ </div>
+<div class="container-fluid">
+<a class="navbar-brand" href="Admin_home.html"> NU Undergrad Application Form </a>
+</div> <!-- end navbar container -->
+</nav>
 <div class="container">
 <div class="bs-docs-section">
 <?php
@@ -447,33 +486,9 @@ if (isset($_GET['msg']))
 </form>
 
 <script type="text/javascript">	
-	$("#NewApplication").formToWizard()
+	$("#NewApplication").formToWizard();
 	hideOtherFinancial();
 	hideMil();
-</script>
-<script type="text/javascript">
-        function checkPasswords()
-        {
-            var pass1 = document.getElementById('Password');
-            var pass2 = document.getElementById('Password2');
-            //Store the Confimation Message Object ...
-            var message = document.getElementById('confirmMessage');
-            //Set the colors we will be using ...
-            var goodColor = "#66cc66";
-            var badColor = "#ff6666";
-            //Compare the values in the password field 
-            //and the confirmation field
-            if(pass1.value == pass2.value)
-            {
-                message.style.color = goodColor;
-                message.innerHTML = "Passwords Match!";
-            }
-            else
-            {
-                message.style.color = badColor;
-                message.innerHTML = "Passwords Do Not Match!";
-            }
-        }
 </script>
 
 </body>

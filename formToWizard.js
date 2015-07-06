@@ -15,14 +15,14 @@
 
         // 2
         $(element).before("<ul id='steps' class='pagination pagination'></ul>");
-
+		
         steps.each(function(i) {
             $(this).wrap("<div id='step" + i + "' class='controls'></div>");
             $(this).append("<p id='step" + i + "commands'><p></p></p>");
 
             // 2
             var name = $(this).find("legend").html();
-            $("#steps").append("<li id='stepDesc" + i + "'><span>" + name + "</span></li>");
+            $("#steps").append("<li id='stepDesc" + i + "'><a href='#' onclick=\'hideAllSteps(); $(\"#step"+i+"\").show(); $(\"#steps li\").removeClass(\"active\"); $(\"#stepDesc" + i + "\").addClass(\"active\");'><span>" + name + "</span></a></li>");
 
             if (i == 0) {
                 createNextButton(i);
