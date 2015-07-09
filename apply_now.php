@@ -495,21 +495,12 @@ if (isset($_GET['msg']))
 </div>
 
 <label></label>
-<<<<<<< HEAD
 <div class="controls">
 	<button type="submit" class="btn btn-primary">
 		Submit
 	</button>
 	<br><br>
 </div>
-=======
-	<div class="controls">
-		<button type="submit" class="btn btn-primary">
-		Submit
-		</button>
-		<br><br>
-	</div>
->>>>>>> origin/master
 </div>
 </fieldset>
 </form>
