@@ -2,7 +2,7 @@
 <head>
 	<title>Nile University Application</title>
 	<link href="./bootstrap.css" rel="stylesheet">
-	<link href="./favicon.ico"  rel="shortcut icon">
+	<link href="./images/NU.ico"  rel="shortcut icon">
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
 	<script lang="text/javascript" src="./formToWizard.js"></script>
 	<script type="text/javascript">
@@ -64,6 +64,15 @@
                 message.innerHTML = "Passwords Do Not Match!";
             }
         }
+		function validateForm()
+		{
+			var errors = "";
+			var pass1=document.getElementById("Password");
+			var pass2=document.forms["NewApplication"];
+			$("#error_panel").show();
+			document.getElementById("error_panel_content").innerHTML = "<p>Test 1,2,3</p>";
+			return false;
+		}
 	</script>
 </head>
 <body>
@@ -71,14 +80,11 @@
 <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><IMG SRC="./NU LOGO.png" style="width:50px;height:30px"></a>
+      <a class="navbar-brand" href="#"><IMG SRC="./images/NU LOGO.png" style="width:50px;height:25px"></a>
  </div>
 <div class="container-fluid">
-<a class="navbar-brand" href="Admin_home.html"> NU Undergrad Application Form </a>
+<a class="navbar-brand" href="Admin_home.html"> Undergraduate Application Form </a>
 </div> <!-- end navbar container -->
 </nav>
 <div class="container">
@@ -92,42 +98,52 @@ if (isset($_GET['msg']))
 			Please store it and your password somewhere safe</strong><br><br></p>";
 }
 ?>
+</div>
+
+<div id="error_panel" class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">The following errors were found, please correct them and resubmit.</h3>
+  </div>
+  <div id="error_panel_content" class="panel-body"> 
+  </div>
+</div>
+
 <form id="NewApplication" onsubmit = "return validateForm()" class="form-vertical" action="./controllers/add_new_applicant.php" method="post">
 <fieldset>
 	<legend style="color: CornflowerBlue"> <span class="auto-style3"> BASIC INFO </span> </legend>
-		<label> Application Password *</label>
+		<label><b> Application Password *</b></label>
 		<div class="controls">
-			<input type="password" class="form-control" placeholder="Enter Password" maxlength="45" style="width: 50%" required name="Password" id="Password">
+			<input data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="" type="password" onkeyup="checkPasswords(); return false;" class="form-control" placeholder="Enter Password" maxlength="45" style="width: 50%" required name="Password" id="Password">
 		</div>
-		<label> Confirm Password *</label>
+		<label><b> Confirm Password *</b></label>
 		<div class="controls">
-			<input onkeyup="checkPasswords(); return false;"type="password" class="form-control" style="width: 50%" placeholder="Confirm Password" maxlength="45" required name="Password2" id="Password2">
+			<input onkeyup="checkPasswords(); return false;" type="password" class="form-control" style="width: 50%" placeholder="Confirm Password" maxlength="45" required name="Password2" id="Password2">
 		<span id="confirmMessage" class="confirmMessage"></span>
 		</div>
 		
-		<label> First Name *</label>
+		<label><b> First Name *</b></label>
 		<div class="controls">
 			<input type="text" class="form-control" placeholder="Enter First Name" style="width: 50%" maxlength="45" required name="FirstName">
 		</div>
-		<label> Middle Name *</label>
+		<label><b> Middle Name *</b></label>
 		<div class="controls">	
 			<input type="text" class="form-control" placeholder="Enter Middle Name" style="width: 50%" maxlength="45" required name="MiddleName">
 		</div>
-		<label> Last Name *</label>
+		<label><b> Last Name *</b></label>
 		<div class="controls">
 			<input type="text" class="form-control" placeholder="Enter Last Name" style="width: 50%" maxlength="45" required name="LastName">
 		</div>
-		<label> Date Of Birth *</label>
+		<label><b> Date Of Birth *</b></label>
 		<div class="controls">
 			<input type="date" class="form-control" style="width: 25%" name="DateOfBirth" required>
 		</div>
-		<label> Gender </label>
+		<label><b> Gender </b></label>
 		<div class="controls">
 		<input type="radio" name="Gender" value="Female" id="genderID" onclick="hideMil()"> Female<br>
 		<input type="radio" name="Gender" value="Male" id="genderID" onclick="viewMil()"> Male<br>
 		</div>
 		<div id="MilitaryDiv">
-			<label> Military Status </label>
+			<label><b> Military Status </b></label>
 			<div class="controls">
 			<select name="MilitaryStatus" class="form-control">
 				<option value="" disabled selected>-Status-</option>
@@ -137,23 +153,23 @@ if (isset($_GET['msg']))
 			</select>
 			</div>
 		</div>
-			<label> Place of Birth *</label>
+			<label><b> Place of Birth *</b></label>
 			<div class="controls">
 			<input type="text" class="form-control" placeholder="Enter Address" maxlength="45" required name="PlaceOfBirth">
 			</div>
-			<label> National ID number </label>
+			<label><b> National ID number </b></label>
 			<div class="controls">
 			<input type="text" class="form-control" placeholder="Enter Number" maxlength="45" name="NationalID">
 			</div>
-			<label> National ID Expiry Date </label>
+			<label><b> National ID Expiry Date </b></label>
 			<div class="controls">
 			<input type="date" class="form-control" style="width: 24%" name="NationalIDExpiry">
 			</div>
-			<label> Passport ID number </label>  
+			<label><b> Passport ID number </b></label>  
 			<div class="controls">
 			<input type="text" class="form-control" placeholder="Enter Address" maxlength="45" name="Passport">
 			</div>
-			<label> Passport ID Expiry Date </label>
+			<label><b> Passport ID Expiry Date </b></label>
 			<div class="controls">
 			<input type="date" class="form-control"  style="width: 24%" name="PassportExpiry">
 			</div>
@@ -162,43 +178,43 @@ if (isset($_GET['msg']))
 
 <fieldset>
 	<legend style="color: CornflowerBlue"> <span class="auto-style3"> CONTACT INFO </span> </legend>
-	<label> Personal Email *</label>
+	<label><b> Personal Email *</b></label>
 	<div class="controls">
 	<input type="email" class="form-control" placeholder="Enter Email" maxlength="45" required name="HomeEmail">
 	</div>
-	<label> Home Address *</label>
+	<label><b> Home Address *</b></label>
 	<div class="controls">
 	<input type="text" class="form-control" placeholder="Enter Address" required name="HomeAddress">
 	</div>
-	<label> Home Number *</label>
+	<label><b> Home Number *</b></label>
 	<div class="controls">
 	<input type="tel" class="form-control" placeholder="Enter Number" maxlength="45" required name="HomeTel">
 	</div>
-	<label> Mobile Number *</label>
+	<label><b> Mobile Number *</b></label>
 	<div class="controls">
 	<input type="tel" class="form-control" placeholder="Enter Number" maxlength="45" required name="HomeMobile">
 	</div>
-	<label> Home Fax </label>
+	<label><b> Home Fax </b></label>
 	<div class="controls">
 	<input type="tel" class="form-control" placeholder="Enter Number" maxlength="45" name="HomeFax">
 	</div>
-	<label> Mailing Address </label>
+	<label><b> Mailing Address </b></label>
 	<div class="controls">
 	<input type="text" class="form-control" placeholder="Enter Address" name="MailingAddress">  
 	</div>
-	<label> Mailing Telephone </label>
+	<label><b> Mailing Telephone </b></label>
 	<div class="controls">
 	<input type="tel" class="form-control" placeholder="Enter Number" maxlength="45" name="MailingTel">
 	</div>
-	<label> Mailing Mobile </label>
+	<label><b> Mailing Mobile </b></label>
 	<div class="controls">
 	<input type="tel" class="form-control" placeholder="Enter Number" maxlength="45" name="MailingMobile">
 	</div>
-	<label> Mailing Fax </label>
+	<label><b> Mailing Fax </b></label>
 	<div class="controls">
 	<input type="tel" class="form-control" placeholder="Enter Number" maxlength="45" name="MailingFax">
 	</div>
-	<label> Other Email </label>
+	<label><b> Other Email </b></label>
 	<div class="controls">
 	<input type="email" class="form-control" placeholder="Enter Email" maxlength="45" name="MailingEmail">
 	</div>
@@ -207,7 +223,7 @@ if (isset($_GET['msg']))
 
 <fieldset>
 <legend style="color: CornflowerBlue"> <span class="auto-style3">ADMISSIONS INFO</span> </legend>
-<label> Applied  Year *</label>
+<label><b> Applied  Year *</b></label>
 <div class="controls">
 <select name="Year" class="form-control" required>
 	<option value="" disabled selected>--Year--</option>
@@ -219,7 +235,7 @@ if (isset($_GET['msg']))
 	?>
 </select>
 </div>
-<label> Applied  Semester *</label>
+<label><b> Applied  Semester *</b></label>
 <div class="controls">
 <select name="SemesterOfApplication" class="form-control" required>
 	<option value="" disabled selected>--Semester--</option>
@@ -227,18 +243,17 @@ if (isset($_GET['msg']))
 	<option value="Spring">Spring</option>
 </select>
 </div>
-<label> School Applied *</label>
+<label><b> School Applied *</b></label>
 <div class="controls">
 <select name="AppliedSchool" class="form-control" required >
 	<option value="" disabled selected>--School--</option>
-	<option value="" disabled selected>--Major--</option>
 	<?php
 	require_once("./functions.php");
 	dropdown_all_schools();
 	?>
 </select>
 </div>
-<label> Intended Major *</label>
+<label><b> Intended Major *</b></label>
 <div class="controls">
 <select name="IntendedMajor" class="form-control" required >
 	<option value="" disabled selected>--Major--</option>
@@ -248,11 +263,11 @@ if (isset($_GET['msg']))
 	?>
 </select>
 </div>
-<label> TOEFL Results </label>
+<label><b> TOEFL Results </b></label>
 <div class="controls">
 <input type="number" class="form-control" placeholder="Enter Number"  style="width: 24%" min="0" max="9999" name="TOEFLResults">
 </div>
-<label> TOEFL Date </label>
+<label><b> TOEFL Date </b></label>
 <div class="controls">
 <input type="date" class="form-control" style="width: 24%" name="TOEFLDate">
 </div>
@@ -261,11 +276,11 @@ if (isset($_GET['msg']))
 
 <fieldset>
 <legend style="color: CornflowerBlue"> <span class="auto-style3">HIGH SCHOOL INFO</span> </legend>
-<label> Current(Last) School* </label>
+<label><b> Current(Last) School* </b></label>
 <div class="controls">
 <input type="text" class="form-control" placeholder="Enter School Name" maxlength="45" name="CurrentSchool" required>
 </div>
-<label> Type of School *</label>
+<label><b> Type of School *</b></label>
 <div class="controls">
 <select name="TypeOfSchool" class="form-control" required>
 	<option value="" disabled selected>-Type-</option>
@@ -273,7 +288,7 @@ if (isset($_GET['msg']))
 	<option value="Private">Private</option>
 </select>
 </div>
-<label> Type of Certificate *</label>
+<label><b> Type of Certificate *</b></label>
 <div class="controls">
 <select name="TypeOfCertificate" class="form-control" required>
 	<option value="" disabled selected>-Type-</option>
@@ -285,11 +300,11 @@ if (isset($_GET['msg']))
 	<option value="Thanaweya Arab">Thanaweya Amma from Arab Countries</option>
 </select>
 </div>
-<label> School Address </label>
+<label><b> School Address </b></label>
 <div class="controls">
 <input type="text" class="form-control" placeholder="Enter Address" name="SchoolAddress">
 </div>
-<label> Language of Instruction </label>
+<label><b> Language of Instruction </b></label>
 <div class="controls">
 <select name="LanguageOfInstruction" class="form-control">
 	<option value="" disabled selected>-Language-</option>
@@ -304,51 +319,51 @@ if (isset($_GET['msg']))
 <fieldset>
 <legend style="color: CornflowerBlue"> <span class="auto-style3">FATHER INFO</span> </legend>
 
-<label> Father's First Name *</label>
+<label><b> Father's First Name *</b></label>
 <div class="controls">
 	<input type="text" class="form-control" placeholder="Enter Fist Name" maxlength="45" required name="FatherFirstName">
 </div>
-<label> Father's Middle Name *</label>
+<label><b> Father's Middle Name *</b></label>
 <div class="controls">
 <input type="text" class="form-control" placeholder="Enter Middle Name" maxlength="45" required name="FatherMiddleName">
 </div>
-<label> Father's Last Name *</label>
+<label><b> Father's Last Name *</b></label>
 <div class="controls">
 <input type="text" class="form-control" placeholder="Enter Last Name" maxlength="45" required name="FatherLastName">
 </div>
-<label> Father's Telephone *</label>
+<label><b> Father's Telephone *</b></label>
 <div class="controls">
 <input type="tel" class="form-control" placeholder="Enter Telephone" maxlength="45" required name="FatherTel">
 </div>
-<label> Father's Mobile *</label>
+<label><b> Father's Mobile *</b></label>
 <div class="controls">
 <input type="tel" class="form-control" placeholder="Enter Mobile" maxlength="45" required name="FatherMobile">
 </div>
-<label> Father's Email *</label>
+<label><b> Father's Email *</b></label>
 <div class="controls">
 <input type="email" class="form-control" placeholder="Enter Email" maxlength="45" required name="FatherEmail">
 </div>
-<label> Father's Occupation *</label>
+<label><b> Father's Occupation *</b></label>
 <div class="controls">
 <input type="text" class="form-control" placeholder="Enter Occupation" maxlength="45" required name="FatherOccupation">
 </div>
-<label> Father's Address </label>
+<label><b> Father's Address </b></label>
 <div class="controls">
 <input type="text" class="form-control" placeholder="Enter Address" name="FatherAddress">
 </div>
-<label> Father's Company </label>
+<label><b> Father's Company </b></label>
 <div class="controls">
 <input type="text" class="form-control" placeholder="Enter Name" maxlength="45" name="FatherCompany">
 </div>
-<label> Father's Business Telephone </label>
+<label><b> Father's Business Telephone </b></label>
 <div class="controls">
 <input type="tel" class="form-control" placeholder="Enter Number" maxlength="45" name="FatherBusinessPhone">
 </div>
-<label> Father's Fax Number </label>
+<label><b> Father's Fax Number </b></label>
 <div class="controls">
 <input type="tel" class="form-control" placeholder="Enter Number" maxlength="45" name="FatherFax">
 </div>
-<label> Father's Business Address </label>
+<label><b> Father's Business Address </b></label>
 <div class="controls">
 <input type="text" class="form-control" placeholder="Enter Address" name="FatherBusinessAddress">
 </div>
@@ -358,51 +373,51 @@ if (isset($_GET['msg']))
 <fieldset>
 <legend style="color: CornflowerBlue"> <span class="auto-style3">MOTHER INFO</span> </legend>
 
-<label> Mother's First Name *</label>
+<label><b> Mother's First Name *</b></label>
 <div class="controls">
 	<input type="text" class="form-control" placeholder="Enter Fist Name" maxlength="45" required name="MotherFirstName">
 </div>
-<label> Mother's Middle Name *</label>
+<label><b> Mother's Middle Name *</b></label>
 <div class="controls">
 <input type="text" class="form-control" placeholder="Enter Middle Name" maxlength="45" required name="MotherMiddleName">
 </div>
-<label> Mother's Last Name *</label>
+<label><b> Mother's Last Name *</b></label>
 <div class="controls">
 <input type="text" class="form-control" placeholder="Enter Last Name" maxlength="45" required name="MotherLastName">
 </div>
-<label> Mother's Telephone *</label>
+<label><b> Mother's Telephone *</b></label>
 <div class="controls">
 <input type="tel" class="form-control" placeholder="Enter Telephone" maxlength="45" required name="MotherTel">
 </div>
-<label> Mother's Mobile *</label>
+<label><b> Mother's Mobile *</b></label>
 <div class="controls">
 <input type="tel" class="form-control" placeholder="Enter Mobile" maxlength="45" required name="MotherMobile">
 </div>
-<label> Mother's Email *</label>
+<label><b> Mother's Email *</b></label>
 <div class="controls">
 <input type="email" class="form-control" placeholder="Enter Email" maxlength="45" required name="MotherEmail">
 </div>
-<label> Mother's Occupation *</label>
+<label><b> Mother's Occupation *</b></label>
 <div class="controls">
 <input type="text" class="form-control" placeholder="Enter Occupation" maxlength="45" required name="MotherOccupation">
 </div>
-<label> Mother's Address </label>
+<label><b> Mother's Address </b></label>
 <div class="controls">
 <input type="text" class="form-control" placeholder="Enter Address" name="MotherAddress">
 </div>
-<label> Mother's Company </label>
+<label><b> Mother's Company </b></label>
 <div class="controls">
 <input type="text" class="form-control" placeholder="Enter Name" maxlength="45" name="MotherCompany">
 </div>
-<label> Mother's Business Telephone </label>
+<label><b> Mother's Business Telephone </b></label>
 <div class="controls">
 <input type="tel" class="form-control" placeholder="Enter Number" maxlength="45" name="MotherBusinessPhone">
 </div>
-<label> Mother's Fax Number </label>
+<label><b> Mother's Fax Number </b></label>
 <div class="controls">
 <input type="tel" class="form-control" placeholder="Enter Number" maxlength="45" name="MotherFax">
 </div>
-<label> Mother's Business Address </label>
+<label><b> Mother's Business Address </b></label>
 <div class="controls">
 <input type="text" class="form-control" placeholder="Enter Address" name="MotherBusinessAddress">
 </div>
@@ -412,62 +427,62 @@ if (isset($_GET['msg']))
 
 <fieldset>
 <legend style="color: CornflowerBlue"> <span class="auto-style3">FINANCIAL INFO</span> </legend>
-<label> Relationship *</label>
+<label><b> Relationship *</b></label>
 <div class="controls">
 	<input type="radio" name="Relationship" value="Father" required onclick="hideOtherFinancial()"> Father<br>
 	<input type="radio" name="Relationship" value="Mother" required onclick="hideOtherFinancial()"> Mother<br>
 	<input type="radio" name="Relationship" value="Other" required onclick="showOtherFinancial()"> Other (Please Specify their info below)<br>
 </div>
 <div id="otherFinancial" visibility="hidden">
-	<label> Other </label>
+	<label><b> Other </b></label>
 	<div class="controls">
 	<input type="text" class="form-control" placeholder="Enter Relationship" name="Other">
 	</div>
-	<label> First Name </label>
+	<label><b> First Name </b></label>
 	<div class="controls">
 	<input type="text" class="form-control" placeholder="Enter Fist Name" maxlength="45" name="OtherFirstName">
 	</div>
-	<label> Middle Name </label>
+	<label><b> Middle Name </b></label>
 	<div class="controls">
 	<input type="text" class="form-control" placeholder="Enter Middle Name" maxlength="45" name="OtherMiddleName">
 	</div>
-	<label> Last Name </label>
+	<label><b> Last Name </b></label>
 	<div class="controls">
 	<input type="text" class="form-control" placeholder="Enter Last Name" maxlength="45" name="OtherLastName">
 	</div>
-	<label> Other's Address </label>
+	<label><b> Other's Address </b></label>
 	<div class="controls">
 	<input type="text" class="form-control" placeholder="Enter Address" name="OtherAddress">
 	</div>
-	<label> Other's Telephone </label>
+	<label><b> Other's Telephone </b></label>
 	<div class="controls">
 	<input type="tel" class="form-control" placeholder="Enter Telephone" maxlength="45" name="OtherTel">
 	</div>
-	<label> Other's Mobile </label>
+	<label><b> Other's Mobile </b></label>
 	<div class="controls">
 	<input type="tel" class="form-control" placeholder="Enter Mobile" maxlength="45" name="OtherMobile">
 	</div>
-	<label> Other's Email </label>
+	<label><b> Other's Email </b></label>
 	<div class="controls">
 	<input type="email" class="form-control" placeholder="Enter Email" maxlength="45" name="OtherEmail">
 	</div>
-	<label> Other's Occupation </label>
+	<label><b> Other's Occupation </b></label>
 	<div class="controls">
 	<input type="text" class="form-control" placeholder="Enter Occupation" maxlength="45" name="OtherOccupation">
 	</div>
-	<label> Other's Company </label>
+	<label><b> Other's Company </b></label>
 	<div class="controls">
 	<input type="text" class="form-control" placeholder="Enter Name" maxlength="45" name="OtherCompany">
 	</div>
-	<label> Other's Business Telephone </label>
+	<label><b> Other's Business Telephone </b></label>
 	<div class="controls">
 	<input type="tel" class="form-control" placeholder="Enter Number" maxlength="45" name="OtherBusinessPhone">
 	</div>
-	<label> Other's Fax Number </label>
+	<label><b> Other's Fax Number </b></label>
 	<div class="controls">
 	<input type="tel" class="form-control" placeholder="Enter Number" maxlength="45" name="OtherFax">
 	</div>
-	<label> Other's Business Address </label>
+	<label><b> Other's Business Address </b></label>
 	<div class="controls">
 	<input type="text" class="form-control" placeholder="Enter Address" name="OtherBusinessAddress">
 	</div>
@@ -476,8 +491,8 @@ if (isset($_GET['msg']))
 
 <label></label>
 <div class="controls">
-	<button type="submit" onclick="showAllSteps();" class="btn btn-primary">
-	Submit
+	<button type="submit" class="btn btn-primary">
+		Submit
 	</button>
 	<br><br>
 </div>
@@ -489,10 +504,10 @@ if (isset($_GET['msg']))
 	$("#NewApplication").formToWizard();
 	hideOtherFinancial();
 	hideMil();
+	$("#error_panel").hide();
 </script>
 
 </body>
-</div>
 
 </div> <!-- Container End !-->
 
