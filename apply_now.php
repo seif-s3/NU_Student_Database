@@ -64,6 +64,15 @@
                 message.innerHTML = "Passwords Do Not Match!";
             }
         }
+		function validateForm()
+		{
+			var errors = "";
+			var pass1=document.getElementById("Password");
+			var pass2=document.forms["NewApplication"];
+			$("#error_panel").show();
+			document.getElementById("error_panel_content").innerHTML = "<p>Test 1,2,3</p>";
+			return false;
+		}
 	</script>
 </head>
 <body>
@@ -71,14 +80,11 @@
 <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#"><IMG SRC="./NU LOGO.png" style="width:50px;height:30px"></a>
  </div>
 <div class="container-fluid">
-<a class="navbar-brand" href="Admin_home.html"> NU Undergrad Application Form </a>
+<a class="navbar-brand" href="Admin_home.html"> Undergraduate Application Form </a>
 </div> <!-- end navbar container -->
 </nav>
 <div class="container">
@@ -92,16 +98,27 @@ if (isset($_GET['msg']))
 			Please store it and your password somewhere safe</strong><br><br></p>";
 }
 ?>
+</div>
+
+<div id="error_panel" class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">The following errors were found, please correct them and resubmit.</h3>
+  </div>
+  <div id="error_panel_content" class="panel-body">
+    
+  </div>
+</div>
+
 <form id="NewApplication" onsubmit = "return validateForm()" class="form-vertical" action="./controllers/add_new_applicant.php" method="post">
 <fieldset>
 	<legend style="color: CornflowerBlue"> <span class="auto-style3"> BASIC INFO </span> </legend>
 		<label> Application Password *</label>
 		<div class="controls">
-			<input type="password" class="form-control" placeholder="Enter Password" maxlength="45" style="width: 50%" required name="Password" id="Password">
+			<input data-container="body" data-toggle="popover" data-placement="left" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." data-original-title="" title="" type="password" onkeyup="checkPasswords(); return false;" class="form-control" placeholder="Enter Password" maxlength="45" style="width: 50%" required name="Password" id="Password">
 		</div>
 		<label> Confirm Password *</label>
 		<div class="controls">
-			<input onkeyup="checkPasswords(); return false;"type="password" class="form-control" style="width: 50%" placeholder="Confirm Password" maxlength="45" required name="Password2" id="Password2">
+			<input onkeyup="checkPasswords(); return false;" type="password" class="form-control" style="width: 50%" placeholder="Confirm Password" maxlength="45" required name="Password2" id="Password2">
 		<span id="confirmMessage" class="confirmMessage"></span>
 		</div>
 		
@@ -231,7 +248,6 @@ if (isset($_GET['msg']))
 <div class="controls">
 <select name="AppliedSchool" class="form-control" required >
 	<option value="" disabled selected>--School--</option>
-	<option value="" disabled selected>--Major--</option>
 	<?php
 	require_once("./functions.php");
 	dropdown_all_schools();
@@ -475,12 +491,12 @@ if (isset($_GET['msg']))
 </div>
 
 <label></label>
-<div class="controls">
-	<button type="submit" onclick="showAllSteps();" class="btn btn-primary">
-	Submit
-	</button>
-	<br><br>
-</div>
+	<div class="controls">
+		<button type="submit" class="btn btn-primary">
+		Submit
+		</button>
+		<br><br>
+	</div>
 </div>
 </fieldset>
 </form>
@@ -489,10 +505,10 @@ if (isset($_GET['msg']))
 	$("#NewApplication").formToWizard();
 	hideOtherFinancial();
 	hideMil();
+	$("#error_panel").hide();
 </script>
 
 </body>
-</div>
 
 </div> <!-- Container End !-->
 
