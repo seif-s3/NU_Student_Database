@@ -104,12 +104,8 @@ if (isset($_GET['msg']))
   <div class="panel-heading">
     <h3 class="panel-title">The following errors were found, please correct them and resubmit.</h3>
   </div>
-<<<<<<< HEAD
-  <div id="error_panel_content" class="panel-body"> 
-=======
+
   <div id="error_panel_content" class="panel-body">
-    
->>>>>>> origin/master
   </div>
 </div>
 

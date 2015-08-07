@@ -1,3 +1,45 @@
+<html>
+<head>
+	<title>Nile University Application</title>
+	<link href="./bootstrap.css" rel="stylesheet">
+	<link href="./images/NU.ico"  rel="shortcut icon">
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+	<script lang="text/javascript" src="./formToWizard.js"></script>
+	<script type="text/javascript">
+	</script>
+</head>
+<body>
+<nav class="navbar navbar-default">
+<div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+      </button>
+      <a class="navbar-brand" href="#"><IMG SRC="./images/NU LOGO.png" style="width:50px;height:25px"></a>
+ </div>
+<div class="container-fluid">
+<a class="navbar-brand" href="Admin_home.html"> Undergraduate Application Form </a>
+</div> <!-- end navbar container -->
+</nav>
+<div class="container">
+<div class="bs-docs-section">
+<?php
+if (isset($_GET['msg']))
+{
+	$id = $_GET['msg'];
+	echo "<p class='bg-success text-center'><br><strong>Application Edited and Submitted Successfully!<br>
+		  </p>";
+}
+?>
+</div>
+
+<div id="error_panel" class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title">The following errors were found, please correct them and resubmit.</h3>
+  </div>
+
+  <div id="error_panel_content" class="panel-body">
+  </div>
+</div>
 <form id="NewApplication" onsubmit = "return validateForm()" class="form-vertical" action="./controllers/add_new_applicant.php" method="post">
    <?php
       require_once("../functions.php");
@@ -439,3 +481,10 @@
    }
    ?>
 </form>
+</script>
+
+</body>
+
+</div> <!-- Container End !-->
+
+</html>
