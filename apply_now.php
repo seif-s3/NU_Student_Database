@@ -68,10 +68,21 @@
 		{
 			var errors = "";
 			var pass1=document.getElementById("Password");
-			var pass2=document.forms["NewApplication"];
-			$("#error_panel").show();
-			document.getElementById("error_panel_content").innerHTML = "<p>Test 1,2,3</p>";
-			return false;
+			var pass2=document.getElementById("Password2");
+			
+			
+			if(pass1 != pass2)
+				errors.concat("- Passwords Do no match.\n");
+			if(document.getElementById("NationalID") == "" && document.getElementById("Passport") == "" )
+				errors.concat("- Must provide either National ID or Passport Number.\n");
+			if(document.getElementById("Gender") == "Male" && document.getElementById("MilitaryStatus") == "")
+				errors.concat("- Males must provide a military status.\n");
+			
+			if(errors.length > 0)
+			{
+				$("#error_panel").show();
+				return false;
+			}
 		}
 	</script>
 </head>
@@ -109,7 +120,7 @@ if (isset($_GET['msg']))
   </div>
 </div>
 
-<form id="NewApplication" onsubmit = "return validateForm()" class="form-vertical" action="./controllers/add_new_applicant.php" method="post">
+<form id="NewApplication" class="form-vertical" action="./controllers/add_new_applicant.php" method="post">
 <fieldset>
 	<legend style="color: CornflowerBlue"> <span class="auto-style3"> BASIC INFO </span> </legend>
 		<label><b> Application Password *</b></label>
