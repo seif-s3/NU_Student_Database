@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -9,6 +10,35 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/styles.css" rel="stylesheet">
 		<link href="../views/favicon.ico"  rel="shortcut icon">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+
+		<script type="text/javascript">
+			$(document).ready(function(){
+				$('#SchoolID').change(function(){
+					var SchoolID = $("#SchoolID").val();
+					var dataString = "SchoolID="+SchoolID
+					$.ajax({
+						type: "POST",
+						url: "Trial.php",
+						data: dataString,
+						cache: false;
+						success: function(data){
+							$("#MajorID").html(data);
+						}
+					});
+				});
+
+			});
+					
+					//$('#MajorID').load("Trial.php?="+$("#SchoolID").val());
+					//var selected=$(this).val();
+					//$.get('Trial.php'{'option':selected.val()},function(data) )
+					//$('select[name="MajorID"]').html(data);
+				
+
+		</script>
+
+		
    </head>
    <body>
       <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
@@ -120,7 +150,7 @@
                                     <input type="text" class="form-control" placeholder="Enter First Name" name="Name">
                                 </div>
                                 <label> School </label>
-                                <select name="SchoolID" class="form-control" style = "width: 25%">
+                                <select name="SchoolID1" class="form-control" style = "width: 25%">
                                     <option value="" selected>--School--</option>
                                     <?php
                                     require_once("../functions.php");
@@ -128,12 +158,24 @@
                                     ?>
                                 </select>
                                 <label> Major </label>
-                                <select name="MajorID" class="form-control" style = "width: 25%">
+                                <select name="MajorID1" class="form-control" style = "width: 25%">
                                     <option value="" selected>--Major--</option>
                                     <?php
                                     require_once("../functions.php");
                                     dropdown_all_majors();
                                     ?>
+                                </select>
+								<label> School Trial </label>
+                                <select name="SchoolID" class="form-control" style = "width: 25%">
+                                    <option value="" selected>Please Select</option>
+                                    <?php
+                                    require_once("../functions.php");
+                                    dropdown_all_schools();
+                                    ?>
+                                </select>
+								<label> Major Trial </label>
+                                <select name="MajorID" class="form-control" style = "width: 25%">
+                                    <option value="" selected>Please choose from above</option>
                                 </select>
                                 <div class="control-group">
                                     <label></label>
@@ -152,5 +194,7 @@
         </div>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/scripts.js"></script>
+		
+
     </body>
 </html>
